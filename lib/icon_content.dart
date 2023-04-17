@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const txtTextStyle = TextStyle(
+  fontSize: 18.0,
+  color: Color(0xFF8D8E98),
+);
+
 class IconContent extends StatelessWidget {
   IconContent({required this.icn, required this.txt});
 
@@ -20,10 +25,7 @@ class IconContent extends StatelessWidget {
         ),
         Text(
           txt,
-          style: const TextStyle(
-            fontSize: 18.0,
-            color: Color(0xFF8D8E98),
-          ),
+          style: txtTextStyle,
         )
       ],
     );
