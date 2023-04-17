@@ -23,6 +23,7 @@ class _InputPageState extends State<InputPage> {
     if (gender == 1) {
       if (maleCardColour == unselectedColour) {
         maleCardColour = defaultColour;
+        femaleCardColour = unselectedColour;
       } else {
         maleCardColour = unselectedColour;
       }
@@ -31,6 +32,7 @@ class _InputPageState extends State<InputPage> {
     if (gender == 2) {
       if (femaleCardColour == unselectedColour) {
         femaleCardColour = defaultColour;
+        maleCardColour = unselectedColour;
       } else {
         femaleCardColour = unselectedColour;
       }
