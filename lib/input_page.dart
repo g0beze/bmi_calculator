@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-const bottomContainerHeight = 80.0;
-const Color defaultColour = Color(0XFF1D1E33);
-const Color bottomContainerColour = Color(0XFFEB1555);
-const Color unselectedColour = Color(0xFF111328);
+import 'constants.dart';
 
 enum Gender { male, female }
 
@@ -37,8 +33,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == Gender.male
-                        ? defaultColour
-                        : unselectedColour,
+                        ? kDefaultColour
+                        : kUnselectedColour,
                     cardChild: IconContent(
                       icn: FontAwesomeIcons.mars,
                       txt: 'MALE',
@@ -53,8 +49,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == Gender.female
-                        ? defaultColour
-                        : unselectedColour,
+                        ? kDefaultColour
+                        : kUnselectedColour,
                     cardChild: IconContent(
                       icn: FontAwesomeIcons.venus,
                       txt: 'FEMALE',
@@ -66,7 +62,12 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ResuableCard(
-              colour: defaultColour,
+              colour: kDefaultColour,
+              cardChild: Column(
+                children: const [
+                  Text('HEIGHT'),
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -74,22 +75,22 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ResuableCard(
-                    colour: defaultColour,
+                    colour: kDefaultColour,
                   ),
                 ),
                 Expanded(
                   child: ResuableCard(
-                    colour: defaultColour,
+                    colour: kDefaultColour,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColour,
+            color: kBottomContainerColour,
             margin: const EdgeInsets.only(top: 10),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           )
         ],
       ),
