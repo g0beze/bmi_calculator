@@ -93,14 +93,16 @@ class _InputPageState extends State<InputPage> {
                           const RoundSliderThumbShape(enabledThumbRadius: 15),
                       overlayShape:
                           const RoundSliderOverlayShape(overlayRadius: 30),
+                      overlayColor: const Color(0x29EB1555),
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: const Color(0xFF8D8E98),
                     ),
                     child: Slider.adaptive(
                       value: height.toDouble(),
                       min: 120,
                       max: 220,
-                      activeColor: Colors.white,
+                      // overlayColor: Colors.blue,
                       thumbColor: kBottomContainerColour,
-                      inactiveColor: const Color(0xFF8D8E98),
                       onChanged: (double newValue) {
                         setState(() {
                           height = newValue.round();
