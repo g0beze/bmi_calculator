@@ -68,8 +68,9 @@ class _InputPageState extends State<InputPage> {
 }
 
 class ResuableCard extends StatelessWidget {
-  ResuableCard({required this.colour});
+  ResuableCard({required this.colour, this.cardChild});
   final Color colour;
+  final Widget? cardChild;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,7 @@ class ResuableCard extends StatelessWidget {
         color: colour,
         borderRadius: BorderRadius.circular(8),
       ),
+      child: cardChild,
     );
   }
 }
