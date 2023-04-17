@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
 const Color defaultColour = Color(0XFF1D1E33);
@@ -24,11 +25,19 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ResuableCard(
                     colour: defaultColour,
+                    cardChild: IconContent(
+                      icn: FontAwesomeIcons.mars,
+                      txt: 'MALE',
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ResuableCard(
                     colour: defaultColour,
+                    cardChild: IconContent(
+                      icn: FontAwesomeIcons.venus,
+                      txt: 'FEMALE',
+                    ),
                   ),
                 ),
               ],
@@ -63,6 +72,36 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class IconContent extends StatelessWidget {
+  IconContent({required this.icn, required this.txt});
+
+  final IconData icn;
+  final String txt;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          icn,
+          size: 80,
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          txt,
+          style: const TextStyle(
+            fontSize: 18.0,
+            color: Color(0xFF8D8E98),
+          ),
+        )
+      ],
     );
   }
 }
