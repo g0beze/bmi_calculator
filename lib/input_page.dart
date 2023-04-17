@@ -12,8 +12,66 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: const Text('BMI CALCULATOR'),
       ),
-      body: const Center(
-        child: Text('Body Text'),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFF1D1E33),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFF1D1E33),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: const Color(0XFF1D1E33),
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFF1D1E33),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFF1D1E33),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
