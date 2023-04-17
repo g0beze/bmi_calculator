@@ -30,39 +30,34 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ResuableCard(
+                    onPress: () {
                       setState(() {
-                        // maleCardColour == unselectedColour ? (maleCardColour = defaultColour, femaleCardColour = unselectedColour) : maleCardColour = unselectedColour;
                         selectedGender = Gender.male;
                       });
                     },
-                    child: ResuableCard(
-                      colour: selectedGender == Gender.male
-                          ? defaultColour
-                          : unselectedColour,
-                      cardChild: IconContent(
-                        icn: FontAwesomeIcons.mars,
-                        txt: 'MALE',
-                      ),
+                    colour: selectedGender == Gender.male
+                        ? defaultColour
+                        : unselectedColour,
+                    cardChild: IconContent(
+                      icn: FontAwesomeIcons.mars,
+                      txt: 'MALE',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ResuableCard(
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
                       });
                     },
-                    child: ResuableCard(
-                      colour: selectedGender == Gender.female
-                          ? defaultColour
-                          : unselectedColour,
-                      cardChild: IconContent(
-                        icn: FontAwesomeIcons.venus,
-                        txt: 'FEMALE',
-                      ),
+                    colour: selectedGender == Gender.female
+                        ? defaultColour
+                        : unselectedColour,
+                    cardChild: IconContent(
+                      icn: FontAwesomeIcons.venus,
+                      txt: 'FEMALE',
                     ),
                   ),
                 ),
