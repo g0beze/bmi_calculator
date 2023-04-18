@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class BottomButton extends StatelessWidget {
-  BottomButton({required this.text, required this.rFunc});
+  BottomButton({required this.text, this.rFunc});
   final String text;
-  final Widget rFunc;
+  final Function()? rFunc;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => rFunc));
-      },
+      onTap: rFunc,
       child: Container(
         color: kBottomContainerColour,
         margin: const EdgeInsets.only(top: 10),

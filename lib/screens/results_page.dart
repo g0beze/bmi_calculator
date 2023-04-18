@@ -1,11 +1,18 @@
 import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
-import 'input_page.dart';
 import '../components/reusable_card.dart';
 import '../components/buttons.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+  ResultsPage({
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+  });
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +24,14 @@ class ResultsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Expanded(
-            child: Text(
-              'Your Result',
-              style: kLargeTxtStyle,
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              alignment: Alignment.bottomLeft,
+              child: const Text(
+                'Your Result',
+                style: kLargeTxtStyle,
+              ),
             ),
           ),
           Expanded(
@@ -30,17 +41,17 @@ class ResultsPage extends StatelessWidget {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    'NORMAL',
+                    resultText,
                     style: kResultTxtStyle,
                   ),
                   Text(
-                    '26.7',
+                    bmiResult,
                     style: kELargeTxtStyle,
                   ),
                   Text(
-                    'You have a higher than normal body weight. Try to exercise more.',
+                    interpretation,
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   ),
@@ -50,7 +61,9 @@ class ResultsPage extends StatelessWidget {
           ),
           BottomButton(
             text: 'Re-CALCULATE',
-            rFunc: InputPage(),
+            rFunc: () {
+              Navigator.pop(context);
+            },
           )
         ],
       ),
