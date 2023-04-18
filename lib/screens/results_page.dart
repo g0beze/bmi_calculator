@@ -1,8 +1,8 @@
 import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 import 'input_page.dart';
-import 'reusable_card.dart';
-import 'buttons.dart';
+import '../components/reusable_card.dart';
+import '../components/buttons.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({super.key});
