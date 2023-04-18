@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'results_page.dart';
 
 enum Gender { male, female }
 
@@ -15,6 +16,7 @@ class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
   int weight = 60;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +75,9 @@ class _InputPageState extends State<InputPage> {
                     'HEIGHT',
                     style: kTxtTextStyle,
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -88,27 +93,31 @@ class _InputPageState extends State<InputPage> {
                       ),
                     ],
                   ),
-                  SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      thumbShape:
-                          const RoundSliderThumbShape(enabledThumbRadius: 15),
-                      overlayShape:
-                          const RoundSliderOverlayShape(overlayRadius: 30),
-                      overlayColor: const Color(0x29EB1555),
-                      activeTrackColor: Colors.white,
-                      inactiveTrackColor: const Color(0xFF8D8E98),
-                    ),
-                    child: Slider.adaptive(
-                      value: height.toDouble(),
-                      min: 120,
-                      max: 220,
-                      // overlayColor: Colors.blue,
-                      thumbColor: kBottomContainerColour,
-                      onChanged: (double newValue) {
-                        setState(() {
-                          height = newValue.round();
-                        });
-                      },
+                  SizedBox(
+                    width: 400,
+                    child: SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        thumbShape:
+                            const RoundSliderThumbShape(enabledThumbRadius: 15),
+                        overlayShape:
+                            const RoundSliderOverlayShape(overlayRadius: 30),
+                        overlayColor: const Color(0x29EB1555),
+                        activeTrackColor: Colors.white,
+                        inactiveTrackColor: const Color(0xFF8D8E98),
+                        trackHeight: 7,
+                      ),
+                      child: Slider.adaptive(
+                        value: height.toDouble(),
+                        min: 120,
+                        max: 220,
+                        // overlayColor: Colors.blue,
+                        thumbColor: kBottomContainerColour,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ],
@@ -127,6 +136,9 @@ class _InputPageState extends State<InputPage> {
                         const Text(
                           'WEIGHT',
                           style: kTxtTextStyle,
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -153,7 +165,7 @@ class _InputPageState extends State<InputPage> {
                               icon: FontAwesomeIcons.minus,
                               iFunc: () {
                                 setState(() {
-                                  weight = weight - 1;
+                                  weight--;
                                 });
                               },
                             ),
@@ -177,16 +189,83 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ResuableCard(
                     colour: kDefaultColour,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'AGE',
+                          style: kTxtTextStyle,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              age.toString(),
+                              style: kLargeTxtStyle,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              iFunc: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              iFunc: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerColour,
-            margin: const EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: kBottomContainerHeight,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const ResultsPage();
+              }));
+            },
+            child: Container(
+              color: kBottomContainerColour,
+              margin: const EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: kBottomContainerHeight,
+              child: const Center(
+                child: Text(
+                  'CALCULATE',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           )
         ],
       ),
@@ -195,7 +274,7 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({this.icon, this.iFunc});
+  const RoundIconButton({super.key, this.icon, this.iFunc});
 
   final IconData? icon;
   final Function()? iFunc;
@@ -210,7 +289,7 @@ class RoundIconButton extends StatelessWidget {
       ),
       onPressed: iFunc,
       shape: const CircleBorder(),
-      fillColor: null,
+      fillColor: const Color(0xFF4C4F5E),
       child: Icon(
         icon,
         size: 35,
